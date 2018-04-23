@@ -40,14 +40,30 @@ module.exports = app => {
 
     async getCreditCardInfo(url) {
       let res = await request.get(url);
-      let $ = cheerio.load(res.text);
+      let $ = cheerio.load(res.text,{decodeEntities: false});
 
       let tags = $('.mr-com.tags').text();
+      let creditFeature = [];
+      $("#creditTs ul li").each(function (i, item) {
+        creditFeature.push($(item).text());
+      });
+      let creditHotLine = this.itemNodeHandle($('#hotLine dl'), $);
+      let creditIntro = this.itemNodeHandle($('#creditIntro dl'), $);
+      let creditChargeRule = this.itemNodeHandle($('#sfIntro dl'), $);
+      let creditGSRule = this.itemNodeHandle($('#gsRule dl'), $);
+
       let creditCardInfo = {
+        'url': url,
         'cover': $('.pic img').attr('data-original'),
         'slogen': $('.intro dt span').text(),
         'address': $('.intro dd').text(),
-        'tags': tags
+        'tags': tags,
+        'credit_feature':creditFeature,
+        'credit_hot_line': creditHotLine,
+        'credit_intro': creditIntro,
+        'credit_charge_rule': creditChargeRule,
+        'credit_gs_rule': creditGSRule
+
       };
       return creditCardInfo;
     }
@@ -65,6 +81,7 @@ module.exports = app => {
       $("#creditSet ul li").each(function (i, item) {
 
         creditSeries.push({
+          'url': $(item).find('a').attr("href"),
           'name': $(item).find('.item-r h3').text(),
           'cover': $(item).find('.pic img').attr('data-original'),
           'tags': $(item).find('.item-r p').text()
