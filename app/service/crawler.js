@@ -54,7 +54,7 @@ module.exports = app => {
 
     async getCreditCardSeriesInfo(url) {
       let res = await request.get(url);
-      let $ = cheerio.load(res.text);
+      let $ = cheerio.load(res.text,{decodeEntities: false});
 
       let tags = $('.mr-com.tags').text();
       let creditFeature = [];
@@ -70,15 +70,21 @@ module.exports = app => {
           'tags': $(item).find('.item-r p').text()
         });
       });
-      let creditIntro = this.itemNodeHandle($('#creditIntro dl'),$);
+
+      let creditIntro = this.itemNodeHandle($('#creditIntro dl'), $);
+
+      let creditChargeRule = this.itemNodeHandle($('#chargeRule'), $);
+
       let creditCardInfo = {
+        'url': url,
         'cover': $('.pic img').attr('data-original'),
         'slogen': $('.intro dt span').text(),
         'address': $('.intro dd').text(),
         'tags': tags,
         'credit_feature': creditFeature,
         'credit_series': creditSeries,
-        'credit_intro': creditIntro
+        'credit_intro': creditIntro,
+        'credit_charge_rule': creditChargeRule
       };
       return creditCardInfo;
     }
@@ -89,7 +95,7 @@ module.exports = app => {
       $(item).find("dt").each(function(i, item){
         items.push({
           'title': $(item).text(),
-          'content': $(item).next().text()
+          'content': $(item).next().html()
         });
       });
       return items;
