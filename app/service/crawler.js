@@ -23,7 +23,7 @@ module.exports = app => {
       return banks;
     }
 
-    async getCreditCards() {
+    async getCreditBanks() {
       let res = await request.get('https://credit.u51.com/kaku/p/1');
       let $ = cheerio.load(res.text);
       let banks = [];
@@ -38,6 +38,19 @@ module.exports = app => {
       return banks;
     }
 
+    async crawlerStart(){
+      let series = [];
+      let $this = this;
+      for(let i = 1; i < 10; i++){
+        let res = await request.get('https://credit.u51.com/kaku/p/1');
+        let $ = cheerio.load(res.text,{decodeEntities: false});
+        $(".creditList li").each((i, item) => {
+          let url = $(item).find(".creditPic").attr("href");
+          $this.getCreditCardSeriesInfo("https://credit.u51.com"+url);
+        });
+      }
+
+    }
     async getCreditCardInfo(url) {
       let res = await request.get(url);
       let $ = cheerio.load(res.text,{decodeEntities: false});
@@ -51,20 +64,56 @@ module.exports = app => {
       let creditIntro = this.itemNodeHandle($('#creditIntro dl'), $);
       let creditChargeRule = this.itemNodeHandle($('#sfIntro dl'), $);
       let creditGSRule = this.itemNodeHandle($('#gsRule dl'), $);
+      let city = "全国";
+      let type = "";
+      let level = "";
+      let org = "";
+      let currency = "";
+      let longest_free = "";
+      //信用卡属性
+      $(".hd-b .hd-b-item dl").each(function (i, item) {
+        switch ($(item).find("dt").text().trim()){
+          case '发卡城市':
+            city = $(item).find("dd").text();
+            break;
+          case '卡片类型':
+            type = $(item).find("dd").text();
+            break;
+          case '卡等级':
+            level = $(item).find("dd").text();
+            break;
+          case '卡组织':
+            org = $(item).find("dd").text();
+            break;
+          case '卡币种':
+            currency = $(item).find("dd").text();
+            break;
+          case '最长免息期':
+            longest_free = $(item).find("dd").text();
+            break;
+          default:
+        }
+      });
 
       let creditCardInfo = {
         'url': url,
         'cover': $('.pic img').attr('data-original'),
-        'slogen': $('.intro dt span').text(),
-        'address': $('.intro dd').text(),
+        'slogan': $('.intro dd').text(),
+        'features': $('.intro dt').html(),
         'tags': tags,
         'credit_feature':creditFeature,
         'credit_hot_line': creditHotLine,
         'credit_intro': creditIntro,
         'credit_charge_rule': creditChargeRule,
-        'credit_gs_rule': creditGSRule
-
+        'credit_gs_rule': creditGSRule,
+        'city': city,
+        'type': type,
+        'level': level,
+        'org': org,
+        'currency':currency,
+        'longest_free':longest_free
       };
+      console.log(creditCardInfo)
       return creditCardInfo;
     }
 
@@ -103,6 +152,7 @@ module.exports = app => {
         'credit_intro': creditIntro,
         'credit_charge_rule': creditChargeRule
       };
+      console.log(creditCardInfo);
       return creditCardInfo;
     }
 
@@ -116,71 +166,6 @@ module.exports = app => {
         });
       });
       return items;
-    }
-    async getNews() {
-      let lastId = await this.ctx.app.redis.get('xuangubao_last_id');
-      let current = Math.floor(Date.now() / 1000);
-      let results = await this.ctx.curl(`https://api.xuangubao.cn/api/pc/msgs?tailmark=${current}&limit=30&subjids=9,10,35,469`, {dataType: 'json'})
-      console.log('start:getNews');
-      if (results.data && results.data.NewMsgs) {
-        let msgs = results.data.NewMsgs;
-        msgs = msgs.reverse();
-        let cookie = await this.ctx.service.xueqiu.getLoginCookie({
-          username: 'sunguide2@wolfunds.com',
-          password: 'sunguide1989'
-        });
-        console.log(cookie);
-        for (let i = 0; i < msgs.length; i++) {
-          if (msgs[i].Id <= lastId) {
-            continue;
-          } else {
-            let message = msgs[i].Title;
-            let title = '';
-            if (msgs[i].Summary) {
-              message = msgs[i].Summary;
-              title = msgs[i].Title;
-            }
-            if (message) {
-              message = message.replace('选股宝讯，', '');
-              if (msgs[i].Stocks) {
-                for (let k = 0; k < msgs[i].Stocks.length; k++) {
-                  let stock_code = getStockCode(msgs[i].Stocks[k].Symbol);
-                  message += '  $' + msgs[i].Stocks[k].Name + '(' + stock_code + ')$  ';
-                }
-              }
-
-              if (msgs[i].BkjInfoArr) {
-                for (let k = 0; k < msgs[i].BkjInfoArr.length; k++) {
-                  message += ' #' + msgs[i].BkjInfoArr[k].Name + '# ';
-                }
-              }
-              console.log(message);
-              let posted = await this.ctx.service.xueqiu.post(message, title, cookie);
-              if (posted) {
-                await this.ctx.app.redis.set('xuangubao_last_id', msgs[i].Id);
-              } else {
-                console.log('post fail');
-              }
-            }
-          }
-        }
-      } else {
-        console.log('fetch xuangubao news fail');
-        console.log(results);
-      }
-
-      function getStockCode(code) {
-        if (code.indexOf('.SZ') > 0 || code.indexOf('.SH') || code.indexOf('.SS')) {
-          code = code.split('.');
-          if (code[1] === 'SS') {
-            return 'SH' + code[0];
-          }
-          return code[1] + code[0];
-        }
-        return code;
-      }
-
-      return results;
     }
   }
 
