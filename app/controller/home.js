@@ -7,7 +7,7 @@ class HomeController extends Controller {
     console.log(banks.length);
 
     let creditCard = await this.ctx.service.crawler.getCreditCardSeriesInfo('https://credit.u51.com/kaku/s-12442');
-    creditCard = await this.ctx.service.crawler.getCreditCardInfo('https://credit.u51.com/kaku/12443.html#');
+    creditCard = await this.ctx.service.crawler.getCreditCardInfo('https://credit.u51.com/kaku/12288.html#');
     this.ctx.body = creditCard;
   }
 }

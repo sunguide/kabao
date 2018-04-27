@@ -50,19 +50,20 @@ module.exports = app => {
       let creditHotLine = this.itemNodeHandle($('#hotLine dl'), $);
       let creditIntro = this.itemNodeHandle($('#creditIntro dl'), $);
       let creditChargeRule = this.itemNodeHandle($('#sfIntro dl'), $);
-      let creditGSRule = this.itemNodeHandle($('#gsRule dl'), $);
-
+      let creditLostRule = this.itemNodeHandle($('#gsRule dl'), $);
+      let creditBaseInfo = $("#baseInfo p").text();
       let creditCardInfo = {
         'url': url,
         'cover': $('.pic img').attr('data-original'),
         'slogen': $('.intro dt span').text(),
         'address': $('.intro dd').text(),
         'tags': tags,
+        'credit_annual_fee':creditBaseInfo,
         'credit_feature':creditFeature,
         'credit_hot_line': creditHotLine,
         'credit_intro': creditIntro,
         'credit_charge_rule': creditChargeRule,
-        'credit_gs_rule': creditGSRule
+        'credit_lost_rule': creditLostRule
 
       };
       return creditCardInfo;
