@@ -3,12 +3,12 @@
 // had enabled by egg
 // exports.static = true;
 exports.nunjucks = {
-  enable: true,
+  enable: false,
   package: 'egg-view-nunjucks',
 };
 
 exports.mongoose = {
-  enable: true,
+  enable: false,
   package: 'egg-mongoose',
 };
 exports.redis = {

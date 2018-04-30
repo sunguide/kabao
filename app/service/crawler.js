@@ -107,7 +107,7 @@ module.exports = app => {
         'credit_hot_line': creditHotLine,
         'credit_intro': creditIntro,
         'credit_charge_rule': creditChargeRule,
-        'credit_lost_rule': creditLostRule
+        'credit_lost_rule': creditLostRule,
         'city': city,
         'type': type,
         'level': level,

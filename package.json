@@ -9,6 +9,8 @@
     "egg-mongoose": "^2.2.0",
     "egg-redis": "^2.0.0",
     "egg-scripts": "^2.5.0",
+    "egg-view-nunjucks": "^2.2.0",
+    "imap": "^0.8.19",
     "superagent": "^3.8.2"
   },
   "devDependencies": {

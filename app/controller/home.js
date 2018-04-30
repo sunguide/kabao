@@ -17,6 +17,11 @@ class HomeController extends Controller {
     await this.ctx.service.crawler.crawlerStart();
     this.ctx.body = "ok";
   }
+
+  async test(){
+    await this.ctx.service.mail.search();
+    this.ctx.body = "ok"
+  }
 }
 
 module.exports = HomeController;

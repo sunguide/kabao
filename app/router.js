@@ -8,4 +8,5 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/banks.json', controller.home.banks);
   router.get('/crawler', controller.home.crawler);
+  router.get('/test', controller.home.test);
 };
