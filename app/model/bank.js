@@ -1,12 +1,13 @@
 module.exports = app => {
     const mongoose = app.mongoose;
     const schema = new mongoose.Schema({
+        id:{type: Number},
         name:{type: String},
-        small_cover: {type: String},
         full_name: {type: String},
-        toGroup: {type: Boolean},
-        plain: {type: String},
-        success: {type: Boolean},
+        alias: {type: String},
+        icon: {type: String},
+        full_name: {type: String},
+        logo: {type: String},
         created: {type: Number},
     });
 
