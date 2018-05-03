@@ -6,7 +6,6 @@ module.exports = app => {
         full_name: {type: String},
         alias: {type: String},
         icon: {type: String},
-        full_name: {type: String},
         logo: {type: String},
         created: {type: Number},
     });

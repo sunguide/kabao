@@ -9,4 +9,7 @@ module.exports = app => {
   router.get('/banks.json', controller.home.banks);
   router.get('/crawler', controller.home.crawler);
   router.get('/test', controller.home.test);
+  router.get('/api', controller.home.test);
+  router.get('/api/bill/update', controller.api.billUpdate);
+  router.get('/test', controller.home.test);
 };
