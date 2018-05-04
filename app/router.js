@@ -12,4 +12,5 @@ module.exports = app => {
   router.get('/api', controller.home.test);
   router.get('/api/bill/update', controller.api.billUpdate);
   router.get('/test', controller.home.test);
+  router.get('/crawler/fetchBanks', controller.crawler.fetchBanks);
 };

@@ -11,7 +11,7 @@
     "egg-scripts": "^2.5.0",
     "egg-view-nunjucks": "^2.2.0",
     "imap": "^0.8.19",
-    "mailparser": "^2.2.0",
+    "mailparse": "^2.2.2",
     "moment": "^2.22.1",
     "superagent": "^3.8.2"
   },

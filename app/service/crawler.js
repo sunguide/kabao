@@ -8,14 +8,14 @@ module.exports = app => {
       super(ctx);
     }
 
-    async getBanks() {
+    async get51CreditBanks() {
       let res = await request.get('https://kaku.51credit.com/tag/310100index.html');
       let $ = cheerio.load(res.text);
       let banks = [];
       $('#bank_all a').each(function (i, item) {
         let bank = {
           'id': $(item).attr('id'),
-          'small_img': $(item).find('img').attr('src'),
+          'icon': $(item).find('img').attr('src'),
           'name': $(item).find('em').text()
         };
         banks.push(bank);
@@ -50,6 +50,14 @@ module.exports = app => {
         });
       }
 
+    }
+    async fetchBanks(ctx){
+      return;//
+      let $this = this;
+      let banks = await $this.get51CreditBanks();
+      for(let i = 0; i< banks.length; i++){
+        (new ctx.model.Bank(banks[i])).save();
+      }
     }
     async getCreditCardInfo(url) {
       let res = await request.get(url);

@@ -9,7 +9,7 @@ class HomeController extends Controller {
   }
   async banks(){
     let banks = await this.ctx.service.crawler.getCreditBanks();
-    let banks1 = await this.ctx.service.crawler.getBanks();
+    let banks1 = await this.ctx.service.crawler.get51CreditBanks();
     console.log(banks.length);
     this.ctx.body = {'banks':banks,'banks1':banks1};
   }

@@ -17,8 +17,8 @@ class APIController extends Controller {
   }
 
   async billUpdate(){
-    await this.ctx.service.mail.getRecentEmails(30);
-    this.ctx.body = "ok"
+    let emails = await this.ctx.service.mail.getRecentEmails(60);
+    this.ctx.body = emails;
   }
   async test(){
     await this.ctx.service.mail.search();
