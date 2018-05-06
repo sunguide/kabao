@@ -19,8 +19,15 @@ class HomeController extends Controller {
   }
 
   async test(){
-    await this.ctx.service.mail.search();
-    this.ctx.body = "ok"
+    let user = {
+      "nickname":"sunguide",
+      "email":"sunguide@qq.com",
+      "phone":"18521527527",
+      "realname":"悟空"
+    };
+    this.ctx.service.user.create(user);
+    //await this.ctx.service.bill.getRecent30DayBills();
+    // this.ctx.body = "ok"
   }
 }
 

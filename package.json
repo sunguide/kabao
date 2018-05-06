@@ -4,6 +4,7 @@
   "description": "a creditcard bag",
   "private": true,
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "cheerio": "^1.0.0-rc.2",
     "egg": "^2.2.1",
     "egg-mongoose": "^2.2.0",
@@ -13,6 +14,7 @@
     "imap": "^0.8.19",
     "mailparse": "^2.2.2",
     "moment": "^2.22.1",
+    "mongoose-sequence": "^4.0.1",
     "superagent": "^3.8.2"
   },
   "devDependencies": {

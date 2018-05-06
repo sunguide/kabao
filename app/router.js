@@ -10,7 +10,8 @@ module.exports = app => {
   router.get('/crawler', controller.home.crawler);
   router.get('/test', controller.home.test);
   router.get('/api', controller.home.test);
+  router.get('/api/test', controller.api.test);
+  router.get('/api/banks', controller.api.banks);
   router.get('/api/bill/update', controller.api.billUpdate);
-  router.get('/test', controller.home.test);
   router.get('/crawler/fetchBanks', controller.crawler.fetchBanks);
 };

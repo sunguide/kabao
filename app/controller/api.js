@@ -6,10 +6,9 @@ class APIController extends Controller {
     this.ctx.body = "API IS OK";
   }
   async banks(){
-    let banks = await this.ctx.service.crawler.getCreditBanks();
-    let banks1 = await this.ctx.service.crawler.getBanks();
+    let banks = await this.ctx.model.Bank.find();
     console.log(banks.length);
-    this.ctx.body = {'banks':banks,'banks1':banks1};
+    this.ctx.body = {'banks':banks};
   }
   async crawler(){
     await this.ctx.service.crawler.crawlerStart();
@@ -17,12 +16,21 @@ class APIController extends Controller {
   }
 
   async billUpdate(){
-    let emails = await this.ctx.service.mail.getRecentEmails(60);
+    let emails = await this.ctx.service.bill.getRecent30DayBills(60);
     this.ctx.body = emails;
   }
   async test(){
-    await this.ctx.service.mail.search();
-    this.ctx.body = "ok"
+    console.log('test')
+    const bcrypt = require("bcrypt");
+    const match = await this.ctx.helper.checkPassword("sssssssdddddd", await this.ctx.helper.password('sssssssdddddd'));
+
+    if(match) {
+      //login
+      console.log("success");
+    }
+
+    // this.ctx.body = await this.ctx.service.mail.getAllInboxFolder();
+    // this.ctx.body = await this.ctx.service.mail.search("其他文件夹/myolder");
   }
 }
 

@@ -7,7 +7,7 @@ module.exports = app => {
         toGroup: {type: Boolean},
         plain: {type: String},
         success: {type: Boolean},
-        created: {type: Number},
+        created: {type: Number, default: Date.now()},
     });
 
     return mongoose.model('kb_credit_card', schema);
