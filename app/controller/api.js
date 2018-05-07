@@ -16,7 +16,9 @@ class APIController extends Controller {
   }
 
   async billUpdate(){
-    let emails = await this.ctx.service.bill.getRecent30DayBills(60);
+    let user = await this.ctx.model.User.findOne({id:1});
+    console.log(user);
+    let emails = await this.ctx.service.bill.getRecent30DayBills(user);
     this.ctx.body = emails;
   }
   async test(){

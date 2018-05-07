@@ -7,10 +7,11 @@ module.exports = app => {
         constructor(ctx) {
             super(ctx);
         }
-        async getRecent30DayBills() {
-          let emails = await this.ctx.service.mail.getRecentEmails(60);
+        async getRecent30DayBills(user) {
+          let emails = await this.ctx.service.mail.getAllInboxMails(user, 31);
           let $this = this;
           for(let i = 0; i < emails.length; i++){
+            console.log(emails);
             for(let key in bank_rules){
               if(emails[i].from.text.indexOf(bank_rules[key].email) > -1){
                 fs.writeFile(bank_rules[key].email + '.html', emails[i].html);
