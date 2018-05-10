@@ -23,7 +23,11 @@ class APIController extends Controller {
   }
   async test(){
     console.log('test')
-    const bcrypt = require("bcrypt");
+    this.ctx.logger.error("ddd");
+    let emails = [1,2,3];
+    emails = emails.concat([5,6,7]);
+console.log(emails);
+const bcrypt = require("bcrypt");
     const match = await this.ctx.helper.checkPassword("sssssssdddddd", await this.ctx.helper.password('sssssssdddddd'));
 
     if(match) {

@@ -9,16 +9,48 @@ module.exports = app => {
         }
         async getRecent30DayBills(user) {
           let emails = await this.ctx.service.mail.getAllInboxMails(user, 31);
+          // let emails = await this.ctx.service.mail.getTargetInboxMails(this.ctx.service.mail.getClient(user),"INBOX");
+
           let $this = this;
           for(let i = 0; i < emails.length; i++){
-            console.log(emails);
+            let email = emails[i];
+            let bill_type = 0;
             for(let key in bank_rules){
               if(emails[i].from.text.indexOf(bank_rules[key].email) > -1){
-                fs.writeFile(bank_rules[key].email + '.html', emails[i].html);
-                $this.analyze(emails[i].html, bank_rules[key]);
+                fs.writeFile(email.from.text + Date.now()+ '.html', emails[i].html);
+                // $this.analyze(emails[i].html, bank_rules[key]);
+                bill_type = 1;
+              }else if(email.subject.indexOf("信用卡")>-1 && email.subject.indexOf("账单")>-1){
+                fs.writeFile(email.from.text + Date.now()+ '.html', emails[i].html);
+                // $this.analyze(emails[i].html, bank_rules[key]);
+                bill_type = 1;
+              }else if(email.subject.indexOf("账单")>-1){
+                fs.writeFile(email.from.text + Date.now()+ '.html', emails[i].html);
+                // $this.analyze(emails[i].html, bank_rules[key]);
+                bill_type = 2;
               }
             }
+
+            let emailModel = {
+              user_id: user.id,
+              message_id:email.messageId,
+              subject: email.subject,
+              from: email.from.text,
+              to: email.to.text,
+              html: email.html ? email.html:'',
+              text: email.html ? '':email.text,
+              attachments: email.attachments,
+              date: email.date,
+              bill_type:bill_type
+            };
+            await (new this.ctx.model.UserEmail(emailModel)).save(function (err, doc) {
+                if(err){
+                  console.log(err);
+                }
+            });
+            console.log("all:"+emails.length);
           }
+          return "all:"+emails.length;
         }
 
         async analyze(html,rule){

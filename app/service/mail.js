@@ -79,6 +79,7 @@ module.exports = app => {
             if (err) {
               reject(err);
             }
+            imap.end();
             resolve(boxes);
           });
         });
@@ -213,7 +214,8 @@ module.exports = app => {
       let boxes = await this.getAllInboxFolder(user);
       let emails = [];
       for(let k in boxes){
-        emails.concat(await this.getTargetInboxMails(this.getClient(user), boxes[k], options));
+        app.logger.debug(boxes[k]);
+        emails = emails.concat(await this.getTargetInboxMails(this.getClient(user), boxes[k], options));
       }
       return emails;
     }
@@ -222,7 +224,7 @@ module.exports = app => {
     }
     getTargetInboxMails(client, inbox, options){
       let day = 31;
-      if(options !== null && options.day){
+      if(options !== undefined && options['day']){
         day = options.day;
       }
       let since = moment().subtract(day, 'days').format('LL');
@@ -275,15 +277,13 @@ module.exports = app => {
       return new Promise((resolve, reject) => {
         client.once('ready', function () {
           client.openBox(inbox, true, function (err, box) {
-            console.log(since);
             if (err) throw err;
             client.search(['ALL', ['SINCE', since]], function (err, results) {//搜寻2017-05-20以后所有的邮件
               if (err) throw err;
-              console.log(results);
               if(results.length === 0){
                 resolve([]);
-                 client.end();
-                 return;
+                client.end();
+                return;
               }
               let f = client.fetch(results, {bodies: ''});//抓取邮件（默认情况下邮件服务器的邮件是未读状态）
               f.on('message', function (msg, seqno) {
@@ -293,7 +293,7 @@ module.exports = app => {
                     mail.attachments = [];
                     mails.push(mail);
                   }).catch(err => {
-                    console.log(err)
+                    app.logger.error(err);
                   });
                   //第二种方案，过滤掉附件的处理,
                   //需要解决数据丢失的问题
@@ -344,15 +344,15 @@ module.exports = app => {
                   //end
                 });
                 msg.once('end', function () {
-                  console.log(seqno + '完成');
+                  app.logger.debug(seqno + '完成');
                 });
               });
               f.once('error', function (err) {
-                console.log('抓取出现错误: ' + err);
+                app.logger.error('fetch email error: ' + err);
                 reject(err);
               });
               f.once('end', function () {
-                console.log('所有邮件抓取完成!');
+                app.logger.debug('all email fetch finish!');
                 client.end();
               });
             });
@@ -360,13 +360,12 @@ module.exports = app => {
         });
 
         client.once('error', function (err) {
-          console.log(err);
+          app.logger.error(err);
           reject(err);
         });
 
         client.once('end', function () {
-          console.log('Connection ended');
-          console.log("所有邮件抓取完成:" + mails.length);
+          app.logger.debug(inbox+"-所有邮件抓取完成:" + mails.length);
           resolve(mails.reverse());
         });
 
@@ -435,13 +434,10 @@ module.exports = app => {
       return new Promise((resolve, reject) => {
         client.once('ready', function () {
           openInbox(function (err, box) {
-            console.log(box);
-            console.log(since);
             if (err) throw err;
             client.search(['ALL', ['SINCE', since]], function (err, results) {//搜寻2017-05-20以后所有的邮件
               if (err) throw err;
-              console.log(results);
-              var f = client.fetch(results, {bodies: ''});//抓取邮件（默认情况下邮件服务器的邮件是未读状态）
+              let f = client.fetch(results, {bodies: ''});//抓取邮件（默认情况下邮件服务器的邮件是未读状态）
               f.on('message', function (msg, seqno) {
                 msg.on('body', function (stream, info) {
                   //第一种方案：一个函数搞定，但是不能对附件忽略，耗时比较久
@@ -449,7 +445,7 @@ module.exports = app => {
                     mail.attachments = [];
                     mails.push(mail);
                   }).catch(err => {
-                    console.log(err)
+                    app.logger.error(err);
                   });
                   //第二种方案，过滤掉附件的处理,
                   //需要解决数据丢失的问题
@@ -500,15 +496,14 @@ module.exports = app => {
                   //end
                 });
                 msg.once('end', function () {
-                  console.log(seqno + '完成');
+                  app.logger.debug(seqno + '完成');
                 });
               });
               f.once('error', function (err) {
-                console.log('抓取出现错误: ' + err);
+                app.logger.error(err);
                 reject(err);
               });
               f.once('end', function () {
-                console.log('所有邮件抓取完成!');
                 client.end();
               });
             });
@@ -516,13 +511,12 @@ module.exports = app => {
         });
 
         client.once('error', function (err) {
-          console.log(err);
+          app.logger.error(err);
           reject(err);
         });
 
         client.once('end', function () {
-          console.log('Connection ended');
-          console.log("所有邮件抓取完成:" + mails.length);
+          app.logger.debug('Connection ended');
           resolve(mails.reverse());
         });
 
