@@ -227,7 +227,7 @@
                                                             轻松管卡，快乐生活
                                                         </h2>
                                                         <p class="lead c-white alpha-8 mt-5 line-height-1_8 animated" data-animation-in="fadeInUpBig" data-animation-delay="200">
-                                                            卡奴必备：妈妈再也不用担心我的还款日了。
+                                                            卡奴必备：妈妈再也不用担心我的还款日了。<br>
                                                             养卡神器：合理刷卡消费，助力早日提额。
                                                         </p>
 
