@@ -3,7 +3,7 @@
 // had enabled by egg
 // exports.static = true;
 exports.nunjucks = {
-  enable: false,
+  enable: true,
   package: 'egg-view-nunjucks',
 };
 

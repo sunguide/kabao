@@ -8,6 +8,13 @@ module.exports = appInfo => {
 
   // add your config here
   config.middleware = [];
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.tpl': 'nunjucks',
+    }
+  };
+
 
   return config;
 };
