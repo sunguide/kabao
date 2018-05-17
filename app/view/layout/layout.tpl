@@ -164,9 +164,9 @@
                             <div class="container navbar-container">
                                 <!-- Brand/Logo -->
                                 <a class="navbar-brand" href="../../index.html">
-                                    <img src="https://preview.webpixels.io/boomerang-v3.6/assets/images/logo/logo-1-a.png" class="d-none d-lg-inline-block" alt="Boomerang">
+                                    <img src="/public/kabao.png" class="d-none d-lg-inline-block" alt="卡包" style="width: 60px;">
                                     <img src="https://preview.webpixels.io/boomerang-v3.6/assets/images/logo/logo-1-a.png" class="d-lg-none" alt="Boomerang">            </a>
-
+                                    <span style="color:#FFFFFF;font-size:30px;">卡包</span>
                                 <div class="d-inline-block">
                                     <!-- Navbar toggler  -->
                                     <button class="navbar-toggler hamburger hamburger-js hamburger--spring" type="button" data-toggle="collapse" data-target="#navbar_main" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -232,7 +232,7 @@
                                                         </p>
 
                                                         <a href="#" class="btn btn-styled btn-lg btn-white btn-circle btn-outline mt-5 animated" data-animation-in="fadeInUpBig" data-animation-delay="1000" data-scroll-to="#sct_what_we_do">
-                                                            See what we do
+                                                            立即下载
                                                         </a>
                                                     </div>
                                                 </div>
@@ -251,11 +251,11 @@
                                                             卡包在手，财富我有
                                                         </h2>
                                                         <p class="lead c-white alpha-8 mt-5 line-height-1_8 animated" data-animation-in="fadeInUpBig" data-animation-delay="200">
-                                                           智能消费：AI人工智能助你从省钱消费到赚钱消费。
+                                                           智能消费：AI人工智能助你从省钱消费到消费赚钱。
                                                         </p>
 
                                                         <a href="#" class="btn btn-styled btn-lg btn-white btn-circle btn-outline mt-5 animated" data-animation-in="fadeInUpBig" data-animation-delay="1000" data-scroll-to="#sct_what_we_do">
-                                                            Create account
+                                                            加入
                                                         </a>
                                                     </div>
                                                 </div>
@@ -279,7 +279,7 @@
                         <div class="container sct-inner">
                             <div class="section-title section-title-inverse section-title--style-1 text-center mb-2 animate-on-scroll fadeInDown">
                                 <h3 class="section-title-inner text-normal heading-1 strong-400 c-white">
-                                    <span>Reasons to work with us</span>
+                                    <span>做最纯粹的管卡神器</span>
                                 </h3>
                                 <span class="section-title-delimiter clearfix d-none"></span>
                             </div>
@@ -287,7 +287,8 @@
                             <span class="clearfix"></span>
 
                             <div class="fluid-paragraph fluid-paragraph-sm c-white alpha-8 strong-300 text-center animate-on-scroll fadeInDown" data-wow-delay="0.3s">
-                                Start building fast, beautiful and modern looking websites in no time using our theme.
+                                受够了其他信用卡管理工具的贷款推荐了吗？<br>受够了其他信用卡管理工具漫天的广告了吗？<br>受够了...?<br>
+                                选择卡包，只需要一个理由：纯粹，简单！回归自然！
                             </div>
 
                             <span class="space-xs-xl"></span>
@@ -299,9 +300,9 @@
                                             <i class="icon-basic-heart-broken"></i>
                                         </div>
                                         <div class="block-content pt-3">
-                                            <h3 class="heading heading-3 c-white strong-400 text-capitalize">Growing up sales</h3>
+                                            <h3 class="heading heading-3 c-white strong-400 text-capitalize">账单管理</h3>
                                             <p class="c-white text-lg alpha-6">
-                                                Lorem ipsum dolor sit amet consectetur adipiscing elit labore et dolore.
+                                                温馨提醒，按时还款，防止逾期
                                             </p>
                                         </div>
                                     </div>
@@ -313,9 +314,9 @@
                                             <i class="icon-basic-laptop"></i>
                                         </div>
                                         <div class="block-content pt-3">
-                                            <h3 class="heading heading-3 c-white strong-400 text-capitalize">Business strategy</h3>
+                                            <h3 class="heading heading-3 c-white strong-400 text-capitalize">养卡必备</h3>
                                             <p class="c-white text-lg alpha-6">
-                                                Lorem ipsum dolor sit amet consectetur adipiscing elit labore et dolore.
+                                                提供合理的刷卡建议，一款必备的提额神器
                                             </p>
                                         </div>
                                     </div>
@@ -327,9 +328,23 @@
                                             <i class="icon-basic-server2"></i>
                                         </div>
                                         <div class="block-content pt-3">
-                                            <h3 class="heading heading-3 c-white strong-400 text-capitalize">Increase profits</h3>
+                                            <h3 class="heading heading-3 c-white strong-400 text-capitalize">省钱消费</h3>
                                             <p class="c-white text-lg alpha-6">
-                                                Lorem ipsum dolor sit amet consectetur adipiscing elit labore et dolore.
+                                                根据银行和商户活动，提供最优的消费方式
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-4 animate-on-scroll fadeInDown">
+                                    <div class="icon-block icon-block--style-1-v5 text-center px-2">
+                                        <div class="block-icon block-icon-lg block-icon-circle">
+                                            <i class="icon-basic-server2"></i>
+                                        </div>
+                                        <div class="block-content pt-3">
+                                            <h3 class="heading heading-3 c-white strong-400 text-capitalize">消费赚钱</h3>
+                                            <p class="c-white text-lg alpha-6">
+                                                银行和商户的羊毛不得不薅
                                             </p>
                                         </div>
                                     </div>
