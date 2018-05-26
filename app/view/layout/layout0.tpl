@@ -170,14 +170,44 @@
                                 <div class="d-inline-block">
                                     <!-- Navbar toggler  -->
                                     <button class="navbar-toggler hamburger hamburger-js hamburger--spring" type="button" data-toggle="collapse" data-target="#navbar_main" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="hamburger-box">
-                                            <span class="hamburger-inner"></span>
-                                        </span>
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
                                     </button>
                                 </div>
 
                                 <div class="collapse navbar-collapse align-items-center justify-content-end" id="navbar_main">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
 
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown">
+                                                    <a href="index.html" class="dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Homepage</a>
+                                                    <a href="homepage-video.html" class="dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Homepage: Video</a>
+                                                    <a href="homepage-image.html" class="dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Homepage: Image</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a href="pricing.html" class="nav-link">Pricing</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a href="blog.html" class="nav-link">Blog</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a href="contact.html" class="nav-link">Contact</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="../../demos.html" class="nav-link">Demos</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="pl-4 d-none d-lg-inline-block">
+                                    <a href="https://goo.gl/9BbH7R" class="btn btn-styled btn-sm btn-base-5 text-uppercase btn-circle">
+                                        Purchase now
+                                        <span class="badge badge-pill bg-base-1">$23 USD</span>    </a>
                                 </div>
                             </div>
                         </nav>
@@ -197,8 +227,8 @@
                                                             轻松管卡，快乐生活
                                                         </h2>
                                                         <p class="lead c-white alpha-8 mt-5 line-height-1_8 animated" data-animation-in="fadeInUpBig" data-animation-delay="200">
-                                                            卡奴必备：再也不用担心我的还款日了。<br>
-                                                            提额神器：合理刷卡消费，助力早日提额。
+                                                            卡奴必备：妈妈再也不用担心我的还款日了。<br>
+                                                            养卡神器：合理刷卡消费，助力早日提额。
                                                         </p>
 
                                                         <a href="#" class="btn btn-styled btn-lg btn-white btn-circle btn-outline mt-5 animated" data-animation-in="fadeInUpBig" data-animation-delay="1000" data-scroll-to="#sct_what_we_do">
@@ -221,11 +251,11 @@
                                                             卡包在手，财富我有
                                                         </h2>
                                                         <p class="lead c-white alpha-8 mt-5 line-height-1_8 animated" data-animation-in="fadeInUpBig" data-animation-delay="200">
-                                                            智能消费：AI人工智能助你从省钱消费到消费赚钱。
+                                                           智能消费：AI人工智能助你从省钱消费到消费赚钱。
                                                         </p>
 
                                                         <a href="#" class="btn btn-styled btn-lg btn-white btn-circle btn-outline mt-5 animated" data-animation-in="fadeInUpBig" data-animation-delay="1000" data-scroll-to="#sct_what_we_do">
-                                                            立即体验
+                                                            加入
                                                         </a>
                                                     </div>
                                                 </div>
@@ -257,7 +287,7 @@
                             <span class="clearfix"></span>
 
                             <div class="fluid-paragraph fluid-paragraph-sm c-white alpha-8 strong-300 text-center animate-on-scroll fadeInDown" data-wow-delay="0.3s">
-                                受够了其他信用卡管理工具的贷款推荐了吗？<br><br>受够了其他信用卡管理工具漫天的广告了吗？<br><br>受够了...?<br><br>
+                                受够了其他信用卡管理工具的贷款推荐了吗？<br>受够了其他信用卡管理工具漫天的广告了吗？<br>受够了...?<br>
                                 选择卡包，只需要一个理由：纯粹，简单！回归自然！
                             </div>
 
