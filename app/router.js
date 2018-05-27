@@ -16,4 +16,10 @@ module.exports = app => {
   router.get('/crawler/fetchBanks', controller.crawler.fetchBanks)
   router.get('/test/fetchPage', controller.test.fetchPage);
 
+  router.get('/user/profile', controller.user.profile);
+
+  router.get('/api/user/card/add', controller.api.user.addCard);
+  router.resources('user/cards', '/api/user/cards', app.controller.api.user.card);
+
+
 };

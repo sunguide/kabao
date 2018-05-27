@@ -15,3 +15,7 @@ exports.redis = {
   enable: false,
   package: 'egg-redis',
 };
+exports.validate = {
+  enable: true,
+  package: 'egg-validate',
+};

@@ -14,7 +14,12 @@ module.exports = appInfo => {
       '.tpl': 'nunjucks',
     }
   };
-
+  config.middleware = [
+    'apiErrorHandler'
+  ];
+  config.apiErrorHandler = {
+    match: '/api',
+  };
 
   return config;
 };

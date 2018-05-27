@@ -27,7 +27,17 @@ module.exports = appInfo => {
             password: 'fuckyou',
             db: 2,
         },
-    }
+    };
+    config.security = {
+      csrf: {
+        enable:false,
+        useSession: false, // if useSession set to true, the secret will keep in session instead of cookie
+        ignoreJSON: false, // skip check JSON requests if ignoreJSON set to true
+        queryName: '_csrf', // 通过 query 传递 CSRF token 的默认字段为 _csrf
+        bodyName: '_csrf', // 通过 body 传递 CSRF token 的默认字段为 _csrf
+      },
+      domainWhiteList: ['http://localhost:7007']
+    };
     return config;
 };
 

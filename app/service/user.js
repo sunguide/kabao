@@ -23,6 +23,18 @@ module.exports = app => {
 
         }
 
+        //信用卡
+        async addCard(){
+
+        }
+
+        async removeCard(){
+
+        }
+
+        async getCardList(){
+
+        }
     }
 
     return user;

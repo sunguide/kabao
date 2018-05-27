@@ -107,6 +107,10 @@ module.exports = helper = {
     }
     return moment().format(format);
   },
+  format(date, format){
+    const moment = require("moment");
+    return moment(date).format(format);
+  },
   * sleep(timeout){
     return new Promise((resolve, reject) => {
       setTimeout(function () {
