@@ -49,6 +49,13 @@ class controller extends Controller {
     await ctx.service.userCard.update(Object.assign({id}, ctx.request.body));
     ctx.status = 204;
   }
+
+  async destory(){
+    const {ctx} = this;
+    const id = ctx.params.id;
+    await ctx.service.userCard.update(Object.assign({id}, ctx.request.body));
+    ctx.status = 204;
+  }
 }
 
 module.exports = controller;

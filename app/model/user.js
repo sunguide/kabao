@@ -13,6 +13,6 @@ module.exports = app => {
         password: {type: String},
         created: {type: Number, default: Date.now()},
     });
-    schema.plugin(AutoIncrement, {inc_field: 'id'});
+    schema.plugin(AutoIncrement, {id:"user_id", inc_field: 'id'});
     return mongoose.model('kb_user', schema);
 };

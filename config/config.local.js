@@ -17,7 +17,8 @@ module.exports = appInfo => {
     config.env = "local";
 
     config.mongoose = {
-        url: 'mongodb://10.0.30.61/kabao_dev',
+        // url: 'mongodb://10.0.30.61/kabao_dev',
+        url: 'mongodb://127.0.0.1/kabao_dev',
         options: {}
     };
     config.redis = {

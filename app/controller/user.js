@@ -6,14 +6,8 @@ class controller extends Controller {
     await this.ctx.render('user/profile.tpl');
   }
 
-  async addCard(){
-    const { ctx, service } = this;
-    const createRule = {
-      title: { type: 'string' },
-      content: { type: 'string' },
-    };
-    // 校验参数
-    ctx.validate(createRule);
+  async cards(){
+    await this.ctx.render('user/cards.tpl');
   }
 }
 
