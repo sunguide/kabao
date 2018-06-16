@@ -7,6 +7,12 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1524210999853_2952';
 
   // add your config here
+
+  //常用的域名URL
+  config.urls = {
+    api: 'http://api.kabao.im',
+    mcc: 'http://mcc.kabao.im'
+  };
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {

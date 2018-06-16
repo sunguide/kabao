@@ -88,7 +88,7 @@
           mcc = false;
         }
         if(mcc){
-          axios.get('http://api.kabao.im/mcc/' + mcc)
+          axios.get('http://api.kabao.im/mcc/' + mcc, {headers: {'x-csrf-token': ''}})
             .then(res => {
               if (res.status === 200) {
                 this.tableData = [];

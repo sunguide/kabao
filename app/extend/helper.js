@@ -1,4 +1,16 @@
 module.exports = helper = {
+  config(key){
+     let config = this.app.config;
+     if(key.indexOf('.') > 0){
+        const keys = key.split('.');
+        while (key = keys.shift()){
+            config = config[key];
+        }
+     }else{
+       config = config[key];
+     }
+     return config;
+  },
   getFullStockCode(stock_code) {
     if (stock_code < "600000") {
       return "SZ" + stock_code;
