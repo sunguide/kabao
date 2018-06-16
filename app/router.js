@@ -8,6 +8,7 @@ module.exports = app => {
   router.get('/', controller.index.index);
   router.get('/banks.json', controller.home.banks);
   router.get('/crawler', controller.home.crawler);
+  router.get('/mcc', controller.mcc.index);
   router.get('/test', controller.home.test);
   router.get('/api', controller.home.test);
   // router.get('/api/test', controller.api.test);
@@ -21,6 +22,7 @@ module.exports = app => {
 
   router.get('/api/user/card/add', controller.api.users.addCard);
   router.resources('api/user/cards', '/api/user/cards', app.controller.api.user.cards);
+  router.resources('api/mcc', '/api/mcc', app.controller.api.mcc);
   router.resources('api/topics', '/api/topics', app.controller.api.topics);
 
 
