@@ -88,7 +88,7 @@
           mcc = false;
         }
         if(mcc){
-          axios.get('/api/mcc/' + mcc)
+          axios.get('/mcc/' + mcc, {headers: {'x-csrf-token': csrftoken}})
             .then(res => {
               if (res.status === 200) {
                 this.tableData = [];
