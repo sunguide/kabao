@@ -88,7 +88,7 @@
           mcc = false;
         }
         if(mcc){
-          axios.get('/api/mcc/' + mcc)
+          axios.get('http://api.kabao.im/mcc/' + mcc)
             .then(res => {
               if (res.status === 200) {
                 this.tableData = [];
