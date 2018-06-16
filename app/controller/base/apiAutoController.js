@@ -68,7 +68,7 @@ class apiAutoController extends Controller {
   }
 
   response(){
-    this.ctx.setRequestHeader('Access-Control-Allow-Origin','*.kabao.im');
+    this.ctx.set('Access-Control-Allow-Origin','*.kabao.im');
     this.ctx.body = {
       code: this.code,
       data: this.data,
