@@ -84,11 +84,11 @@
         var mcc = this.mcc.trim();
         if((mcc + '').length > 10){
           mcc = mcc.substr(3,4);
-        }else if((mcc + '').length < 4){
+        }else if((mcc + '').length !== 4){
           mcc = false;
         }
         if(mcc){
-          axios.get('/mcc/' + mcc, {headers: {'x-csrf-token': csrftoken}})
+          axios.get('http://api.kabao.im/mcc/' + mcc, {headers: {'x-csrf-token': this.getCookie('csrfToken')}})
             .then(res => {
               if (res.status === 200) {
                 this.tableData = [];
@@ -121,6 +121,21 @@
         }else{
           this.$message.error('请输入正确的mcc码或者商户码');
         }
+      },
+      getCookie(c_name)
+      {
+        if (document.cookie.length>0)
+        {
+          c_start=document.cookie.indexOf(c_name + "=")
+          if (c_start!=-1)
+          {
+            c_start=c_start + c_name.length+1
+            c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+          }
+        }
+        return ""
       }
     }
   })
