@@ -8,7 +8,10 @@ module.exports = app => {
   router.get('/', controller.index.index);
   router.get('/banks.json', controller.home.banks);
   router.get('/crawler', controller.home.crawler);
+
   router.get('/mcc', controller.mcc.index);
+  router.get('/mcc/point', controller.mcc.point);
+
   router.get('/test', controller.home.test);
   router.get('/api', controller.home.test);
   // router.get('/api/test', controller.api.test);
