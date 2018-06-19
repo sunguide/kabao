@@ -31,25 +31,22 @@
             <el-row type="flex" justify="center">
                 <el-col :xs="24" :sm="16" :md="12" :lg="10">
                     <template>
-                        <template>
-                            <el-table
-                                    :data="tableData"
-                                    :show-header=false
-                                    border
-                                    style="width: 100%">
-                                <el-table-column
-                                        prop="name"
-                                        label="商户编号"
-                                        width="180">
-                                </el-table-column>
-                                <el-table-column
-                                        prop="value"
-                                        label="值">
-                                </el-table-column>
-                            </el-table>
-                        </template>
+                        <el-table
+                                :data="tableData"
+                                :show-header=false
+                                border
+                                style="width: 100%">
+                            <el-table-column
+                                    prop="name"
+                                    label="商户编号"
+                                    width="180">
+                            </el-table-column>
+                            <el-table-column
+                                    prop="value"
+                                    label="值">
+                            </el-table-column>
+                        </el-table>
                     </template>
-
                 </el-col>
             </el-row>
         </div>
@@ -83,7 +80,7 @@
       query(){
         var mcc = this.mcc.trim();
         if((mcc + '').length > 10){
-          mcc = mcc.substr(3,4);
+          mcc = mcc.substr(7,4);
         }else if((mcc + '').length !== 4){
           mcc = false;
         }

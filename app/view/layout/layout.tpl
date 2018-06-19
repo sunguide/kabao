@@ -11,7 +11,7 @@
     <meta name="keywords" content="bootstrap, responsive, template, website, html, theme, ux, ui, web, design, developer, support, business, corporate, real estate, education, medical, school, education, demo, css, framework">
     <meta name="author" content="Webpixels">
 
-    <title>Boomerang - Multipurpose Bootstrap Theme</title>
+    <title></title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" type="text/css">
