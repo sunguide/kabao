@@ -51,6 +51,21 @@
             </el-row>
         </div>
     </div>
+    <div class="ad">
+        <el-row type="flex" justify="center">
+            <script type="text/javascript">
+              document.write('<a style="display:none!important" id="tanx-a-mm_27828641_10550189_34722768"></a>');
+              tanx_s = document.createElement("script");
+              tanx_s.type = "text/javascript";
+              tanx_s.charset = "gbk";
+              tanx_s.id = "tanx-s-mm_27828641_10550189_34722768";
+              tanx_s.async = true;
+              tanx_s.src = "http://p.tanx.com/ex?i=mm_27828641_10550189_34722768";
+              tanx_h = document.getElementsByTagName("head")[0];
+              if(tanx_h)tanx_h.insertBefore(tanx_s,tanx_h.firstChild);
+            </script>
+        </el-row>
+    </div>
     <div class="footer">
         <el-row type="flex" justify="center">
             <div class="copyright" v-model="currentYear">
